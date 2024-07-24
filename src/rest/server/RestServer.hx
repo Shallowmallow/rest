@@ -19,8 +19,8 @@ class RestServer {
     private var _httpServer:HttpServer;
     private var _routes:Array<RouteInfo> = [];
     
-    public function new() {
-        _httpServer = new HttpServer();
+    public function new(options:RestServerOptions = null) {
+        _httpServer = new HttpServer(options);
         _httpServer.onRequest = onRequest;
     }
 

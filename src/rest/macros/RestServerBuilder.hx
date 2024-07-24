@@ -109,7 +109,7 @@ class RestServerBuilder {
                         for (e in subApiExprs) {
                             exprs.push(e);
                         }
-                        exprs.push(macro _restServer = new rest.server.RestServer());
+                        exprs.push(macro _restServer = new rest.server.RestServer(options));
                         for (e in routeExprs) {
                             exprs.push(e);
                         }
@@ -146,7 +146,7 @@ class RestServerBuilder {
                 name: "new",
                 access: [APublic],
                 kind: FFun({
-                    args:[],
+                    args:[{name: "options", type: macro: rest.server.RestServerOptions, value: macro null}],
                     expr: macro {
                     }
                 }),
