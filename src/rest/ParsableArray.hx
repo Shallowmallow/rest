@@ -20,9 +20,13 @@ class ParsableArray<TItem:Constructible<Void->Void> & IParsable> implements IPar
         if ((response is Array)) {
             var items:Array<Any> = response;
             for (item in items) {
-                var parsable = new TItem();
-                parsable.parse(item);
-                this.items.push(parsable);
+                if (item != null) {
+                    var parsable = new TItem();
+                    parsable.parse(item);
+                    this.items.push(parsable);
+                } else {
+                    this.items.push(null);
+                }
             }
         }
     }
